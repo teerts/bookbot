@@ -1,16 +1,25 @@
 from stats import get_words_array, get_num_character_occurrences, print_character_count_descending
+import sys
 
 def get_booktext(filepath):
     with open(filepath, "r") as f:
         contents = f.read()
         return contents      
-   
+
 def main():
-    relative_path = 'books/frankenstein.txt'
-    contents = get_booktext(relative_path)
+    args = sys.argv
+    
+    expected_num_args = 2
+    if len(sys.argv) < expected_num_args:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    file_path_arg = 1
+    file_path = args[file_path_arg]
+    contents = get_booktext(file_path)
 
     print("============ BOOKBOT ============")
-    print(f"Analyzing book found at {relative_path}...")    
+    print(f"Analyzing book found at {file_path}...")    
 
     word_array = get_words_array(contents)
     print("----------- Word Count ----------")
@@ -22,3 +31,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+   
