@@ -1,4 +1,4 @@
-from stats import get_words_array, get_num_character_occurrences
+from stats import get_words_array, get_num_character_occurrences, print_character_count_descending
 
 def get_booktext(filepath):
     with open(filepath, "r") as f:
@@ -6,13 +6,19 @@ def get_booktext(filepath):
         return contents      
    
 def main():
-    contents = get_booktext('books/frankenstein.txt')
+    relative_path = 'books/frankenstein.txt'
+    contents = get_booktext(relative_path)
+
+    print("============ BOOKBOT ============")
+    print(f"Analyzing book found at {relative_path}...")    
 
     word_array = get_words_array(contents)
-    print(len(word_array), "words found in the document")
+    print("----------- Word Count ----------")
+    print("Found", len(word_array), "total words")
 
+    print("--------- Character Count -------")
     num_char_occurrences = get_num_character_occurrences(word_array)
-    print(num_char_occurrences)
+    print_character_count_descending(num_char_occurrences)
 
 if __name__ == '__main__':
     main()
