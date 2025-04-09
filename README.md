@@ -7,5 +7,4 @@ BookBot will report the number of words within a file and each unique character 
 Requirements: Python3 installed on runner.
 Usage: python3 main.py [PathToFile]
 
-# bookbot 
 
